@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Simple Database Application</string>
+    <string name="text_view_A">Text View A</string>
+    <string name="text_view_B">Text View A</string>
+    <string name="text_view_C">Text View A</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="marks">Marks</string>
+    <string name="enter_marks">Enter Marks</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="addicon">AddIcon</string>
+    <!--    <string name="enter_first_name">Enter First Name</string>-->
+</resources>
