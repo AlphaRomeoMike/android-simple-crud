@@ -104,6 +104,7 @@
         android:orientation="horizontal"
         android:layout_below="@id/EditTextId"
         android:gravity="center_horizontal"
+        android:id="@+id/LL1"
         android:layout_marginRight="15dp">
     <Button
         android:id="@+id/fab"
@@ -113,7 +114,6 @@
         android:layout_margin="15dp"
         android:text="Add"
         android:backgroundTint="@color/black"
-        android:contentDescription="@string/addicon"
         tools:targetApi="lollipop" />
     <Button
         android:layout_width="wrap_content"
@@ -137,6 +137,24 @@
             android:layout_alignRight="@id/fab"
             android:layout_marginLeft="15dp"
             android:id="@+id/UpdateButton"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LL1"
+        android:layout_margin="15dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/fab"
+            android:layout_below="@id/UpdateButton"
+            android:backgroundTint="@color/black"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="Delete"
+            android:layout_alignRight="@id/fab"
+            android:id="@+id/DeleteButton"
             />
     </LinearLayout>
 </RelativeLayout>

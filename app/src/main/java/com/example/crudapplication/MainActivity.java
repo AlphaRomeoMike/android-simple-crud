@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextName, EditTextSurname, editTextMarks, editTextId;
-    Button buttonAdd, ViewAll, UpdateButton;
+    Button buttonAdd, ViewAll, UpdateButton, DeleteButton;
     DatabaseHelper myDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,13 @@ public class MainActivity extends AppCompatActivity {
         ViewAll = findViewById(R.id.ViewButton);
         UpdateButton = findViewById(R.id.UpdateButton);
         editTextId = findViewById(R.id.EditTextId);
+        DeleteButton = findViewById(R.id.DeleteButton);
         myDB = new DatabaseHelper(MainActivity.this);
         //Later
         AddData();
         viewAll();
         updateData();
+        DeleteData();
 
     }
 
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                         editTextMarks.getText().toString());
                 if(isinserted = true) {
                     Toast.makeText(MainActivity.this, "Data inserted", Toast.LENGTH_LONG).show();
+                    editTextName.setText("");
+                    editTextMarks.setText("");
+                    EditTextSurname.setText("");
                 } else {
                     Toast.makeText(MainActivity.this, "Data was not inserted", Toast.LENGTH_LONG).show();
                 }
@@ -91,11 +96,30 @@ public class MainActivity extends AppCompatActivity {
                         editTextMarks.getText().toString());
                 if(isUpdate == true) {
                     Toast.makeText(MainActivity.this, "Data Updated", Toast.LENGTH_LONG).show();
+                    editTextId.setText("");
+                    editTextName.setText("");
+                    editTextMarks.setText("");
+                    EditTextSurname.setText("");
                 } else {
                     Toast.makeText(MainActivity.this, "Data updation failed", Toast.LENGTH_LONG).show();
                 }
             }
 
+        });
+    }
+
+    public void DeleteData() {
+        DeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer deletedRows = myDB.deleteData(editTextId.getText().toString());
+                if(deletedRows > 0) {
+                    Toast.makeText(MainActivity.this, "Data deleted", Toast.LENGTH_LONG).show();
+                    editTextId.setText("");
+                } else {
+                    Toast.makeText(MainActivity.this, "Data was not deleted", Toast.LENGTH_LONG).show();
+                }
+            }
         });
     }
 
