@@ -75,11 +75,34 @@
         android:inputType="number"
         android:layout_marginLeft="15dp"
         android:importantForAutofill="no" />
+    <TextView
+        android:id="@+id/TextViewD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Id"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="24sp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@id/EditTextMarks"/>
+    <EditText
+        android:id="@+id/EditTextId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewD"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:hint="Enter Id"
+        android:inputType="number"
+        android:layout_marginLeft="15dp"
+        android:importantForAutofill="no" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/EditTextMarks"
+        android:layout_below="@id/EditTextId"
         android:gravity="center_horizontal"
         android:layout_marginRight="15dp">
     <Button

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText editTextName, EditTextSurname, editTextMarks;
+    EditText editTextName, EditTextSurname, editTextMarks, editTextId;
     Button buttonAdd, ViewAll, UpdateButton;
     DatabaseHelper myDB;
     @Override
@@ -27,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
         buttonAdd = findViewById(R.id.fab);
         ViewAll = findViewById(R.id.ViewButton);
         UpdateButton = findViewById(R.id.UpdateButton);
+        editTextId = findViewById(R.id.EditTextId);
         myDB = new DatabaseHelper(MainActivity.this);
         //Later
         AddData();
         viewAll();
+        updateData();
 
     }
 
@@ -63,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                     while (res.moveToNext()) {
                         buffer.append("ID: " + res.getString(0) + "\n");
                         buffer.append("First Name: " + res.getString(1) + "\n");
-                        buffer.append("Sur name: " + res.getString(2) + "\n\n");
+                        buffer.append("Surname: " + res.getString(2) + "\n");
+                        buffer.append("Marks: " + res.getString(3) + "\n\n");
                     }
                     showMessage("Data", buffer.toString());
                 }
@@ -77,4 +80,23 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(Message);
         builder.show();
     }
+
+    public void updateData() {
+        UpdateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isUpdate = myDB.updateData(editTextId.getText().toString(),
+                        editTextName.getText().toString(),
+                        EditTextSurname.getText().toString(),
+                        editTextMarks.getText().toString());
+                if(isUpdate == true) {
+                    Toast.makeText(MainActivity.this, "Data Updated", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Data updation failed", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        });
+    }
+
 }
